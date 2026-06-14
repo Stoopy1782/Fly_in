@@ -65,6 +65,7 @@ name = "fly-in"
 version = "1.0.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "mypy" },
     { name = "webcolors" },
 ]
 
@@ -75,7 +76,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "webcolors" }]
+requires-dist = [
+    { name = "mypy" },
+    { name = "webcolors" },
+]
 
 [package.metadata.requires-dev]
 dev = [

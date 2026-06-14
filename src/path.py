@@ -30,6 +30,9 @@ class Path:
         if len(cap) != 2:
             raise PathError
         try:
-            self.capacity = int(cap[1].rstrip("]"))
+            cap = int(cap[1].rstrip("]"))
+            if cap <= 0:
+                raise ValueError
+            self.capacity = cap
         except ValueError:
             raise PathError

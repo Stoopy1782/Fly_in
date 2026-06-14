@@ -3,7 +3,8 @@ name = "Fly-in"
 version = "1.0.0"
 
 dependencies = [
-  "webcolors"
+  "webcolors",
+  "mypy"
 ]
 
 requires-python = ">= 3.10"
