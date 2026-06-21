@@ -14,22 +14,24 @@ UV = uv run
 .PHONY: install run debug clean lint lint-strict
 
 run:
-	$(UV) python3 src/main.py --file_path=$(MED2)
+	$(UV) python3 main.py --file_path=$(MED3)
 
 install:
 	uv sync
 	touch $$(find .venv -name "webcolors" -type d)/py.typed
+	wget https://cdn.intra.42.fr/document/document/49241/maps.tar.gz
+	tar -xvf maps.tar.gz
 
 debug:
-	$(UV) python3 -m pdb src/main.py
+	$(UV) python3 -m pdb main.py
 
 clean:
-	rm -rf src/__pycache__
+	rm -rf __pycache__
 	rm -rf .mypy_cache
 
 lint:
-	$(UV) flake8 src
-	$(UV) mypy src \
+	$(UV) flake8
+	$(UV) mypy \
 	--warn-return-any \
 	--warn-unused-ignores \
 	--ignore-missing-imports \
@@ -37,5 +39,5 @@ lint:
 	--check-untyped-defs
 
 lint-strict:
-	$(UV) flake8 src
-	$(UV) mypy --strict src 
+	$(UV) flake8
+	$(UV) mypy --strict
