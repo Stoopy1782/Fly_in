@@ -25,7 +25,6 @@ class Manager:
         self.links: list[list[str]] = []
         self.zone_dict: dict[str, Zone] = {}
         self.cost_dict: dict[tuple[Path, ...], float] = {}
-        self.length_dict: dict[tuple[Path, ...], float] = {}
 
     def read_file(self, file: str) -> None:
         try:
