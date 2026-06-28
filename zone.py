@@ -17,7 +17,7 @@ class Zone:
 
     def __init__(self, param: str):
         self.type = Zone.Zone_type.NORMAL
-        self.color: IntegerRGB
+        self.color: IntegerRGB | str
         self.max_drones = 1
         self.x = 0
         self.y = 0
@@ -59,7 +59,10 @@ class Zone:
                 try:
                     self.color = webcolors.name_to_rgb(args.strip().lower())
                 except ValueError:
-                    self.color = webcolors.name_to_rgb("white")
+                    if args.strip().lower() == "rainbow":
+                        self.color = "rainbow"
+                    else:
+                        raise ZoneError
             elif name == "max_drones":
                 try:
                     n = int(args)

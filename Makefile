@@ -14,7 +14,7 @@ UV = uv run
 .PHONY: install run debug clean lint lint-strict
 
 run:
-	$(UV) python3 main.py --file_path=$(MED3)
+	$(UV) python3 main.py --file_path=$(EASY1) --show_stats
 
 install:
 	uv sync
@@ -31,7 +31,7 @@ clean:
 
 lint:
 	$(UV) flake8
-	$(UV) mypy \
+	$(UV) mypy . \
 	--warn-return-any \
 	--warn-unused-ignores \
 	--ignore-missing-imports \
@@ -40,4 +40,4 @@ lint:
 
 lint-strict:
 	$(UV) flake8
-	$(UV) mypy --strict
+	$(UV) mypy --strict .
